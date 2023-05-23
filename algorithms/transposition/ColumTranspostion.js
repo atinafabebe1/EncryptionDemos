@@ -27,6 +27,7 @@ function doProcessOnKeyCT(myKey) {
     for (j = 0; j < selectedKey.length; j++) {
       if (originalKey[i] === sortedKey[j]) {
         sortedKeyPos[i] = j;
+        break; // Add break statement to optimize the loop
       }
     }
   }
