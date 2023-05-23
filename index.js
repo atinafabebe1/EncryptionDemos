@@ -5,6 +5,8 @@ import * as multiplicativeCipher from './algorithms/substition/multiplicativeCip
 import * as playFairCipher from './algorithms/substition/playFairCipher.js';
 import * as vernamCipher from './algorithms/substition/vernamCipher.js';
 import * as vigenereCipher from './algorithms/substition/vigenereCipher.js';
+import * as columTranspostion from './algorithms/transposition/ColumTranspostion.js';
+import * as railFence from './algorithms/transposition/RailFence.js';
 
 document.addEventListener('DOMContentLoaded', function () {
   document.getElementById('encrypt-btn').addEventListener('click', encryptText);
@@ -30,8 +32,12 @@ function createKey(selectedAlgorithm, keyInput) {
       return keyInput;
     case 'vigenere':
       return keyInput;
+    case 'railfence':
+      return parseInt(keyInput);
+    case 'columnTransposition':
+      return keyInput;
     default:
-      return null; // Return null for invalid algorithm selected.
+      return null;
   }
 }
 
@@ -69,6 +75,13 @@ function encryptText() {
         break;
       case 'vigenere':
         encryptedText = vigenereCipher.encrypt(inputText, key);
+        break;
+      case 'railfence':
+        console.log(inputText, key);
+        encryptedText = railFence.encrypt(inputText, key);
+        break;
+      case 'columnTransposition':
+        encryptedText = columTranspostion.encrypt(inputText, key);
         break;
       default:
         encryptedText = 'Invalid algorithm selected.';
@@ -113,6 +126,12 @@ function decryptText() {
         break;
       case 'vigenere':
         decryptedText = vigenereCipher.decrypt(inputText, key);
+        break;
+      case 'railfence':
+        decryptedText = railFence.decrypt(inputText, key);
+        break;
+      case 'columnTransposition':
+        decryptedText = columTranspostion.decrypt(inputText, key);
         break;
       default:
         decryptedText = 'Invalid algorithm selected.';

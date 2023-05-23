@@ -32,7 +32,7 @@ function doProcessOnKeyCT(myKey) {
   }
 }
 
-function encryptionCT(plainText, myKey) {
+export function encrypt(plainText, myKey) {
   doProcessOnKeyCT(myKey);
   let min, i, j, k;
   const originalKey = Array.from(selectedKey);
@@ -77,7 +77,7 @@ function encryptionCT(plainText, myKey) {
   return p1;
 }
 
-function decryptionCT(s, myKey) {
+export function decrypt(s, myKey) {
   doProcessOnKeyCT(myKey);
   let min, i, j, k;
   const key = Array.from(selectedKey);
@@ -112,11 +112,6 @@ function decryptionCT(s, myKey) {
 }
 
 let keyKey = 'megabuck';
-const s = encryptionCT('WE ARE DISCOVERED FLEE AT ONCE', keyKey);
+const s = encrypt('WE ARE DISCOVERED FLEE AT ONCE', keyKey);
 console.log(s);
-console.log(decryptionCT(s, keyKey));
-
-module.exports = {
-  encryptionCT,
-  decryptionCT
-};
+console.log(decrypt(s, keyKey));
