@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cryptographic Algorithms</title>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <script src="index.js" type="module"></script>
+  </head>
+  <body>
+    <h1>Cryptographic Algorithms</h1>
+
+    <form>
+      <label for="input-text">Enter Text:</label>
+      <input type="text" id="input-text" />
+
+      <label for="key">Enter Key:</label>
+      <input type="text" id="key" />
+
+      <label class="algorithm" for="algorithm-select">Select Algorithm:</label>
+      <select id="algorithm-select">
+        <option value="caesar">Caesar Cipher</option>
+        <option value="affine">Affine Cipher</option>
+        <option value="hill">Hill Cipher</option>
+        <option value="multiplicative">Multiplicative Cipher</option>
+        <option value="playfair">PlayFair Cipher</option>
+        <option value="vernam">Vernam Cipher</option>
+        <option value="vigenere">Vigenere Cipher</option>
+      </select>
+
+      <button type="button" id="encrypt-btn">Encrypt</button>
+      <button type="button" id="decrypt-btn">Decrypt</button>
+    </form>
+
+    <div id="output" class="output-container"></div>
+
+    <script src="algorithms/substition/caesarCipher.js" type="module"></script>
+    <script src="algorithms/substition/affineCipher.js" type="module"></script>
+    <script src="algorithms/substition/multiplicativeCipher.js" type="module"></script>
+    <script src="algorithms/substition/playFairCipher.js" type="module"></script>
+    <script src="algorithms/substition/vernamCipher.js" type="module"></script>
+    <script src="algorithms/substition/vigenereCipher.js" type="module"></script>
+    <script src="algorithms/substition/HillCipher.js" type="module"></script>
+  </body>
+</html>
