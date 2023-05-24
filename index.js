@@ -5,8 +5,10 @@ import * as multiplicativeCipher from './algorithms/substition/multiplicativeCip
 import * as playFairCipher from './algorithms/substition/playFairCipher.js';
 import * as vernamCipher from './algorithms/substition/vernamCipher.js';
 import * as vigenereCipher from './algorithms/substition/vigenereCipher.js';
-import * as columTranspostion from './algorithms/transposition/ColumTranspostion.js';
-import * as railFence from './algorithms/transposition/RailFence.js';
+import * as columTranspostion from './algorithms/transposition/columTranspostion.js';
+import * as railFence from './algorithms/transposition/railFence.js';
+import * as myszkowski from './algorithms/transposition/MyszkowskiTransposition.js';
+import * as routeCipher from './algorithms/transposition/routeCipher.js';
 
 document.addEventListener('DOMContentLoaded', function () {
   document.getElementById('encrypt-btn').addEventListener('click', encryptText);
@@ -36,6 +38,12 @@ function createKey(selectedAlgorithm, keyInput) {
       return parseInt(keyInput);
     case 'columnTransposition':
       return keyInput;
+    case 'myszkowski':
+      return keyInput;
+    case 'route':
+      const [row, col] = keyInput.split(',').map(Number);
+      return { row, col };
+
     default:
       return null;
   }
@@ -82,6 +90,12 @@ function encryptText() {
         break;
       case 'columnTransposition':
         encryptedText = columTranspostion.encrypt(inputText, key);
+        break;
+      case 'myszkowski':
+        encryptedText = myszkowski.encrypt(inputText, key);
+        break;
+      case 'route':
+        encryptedText = routeCipher.encrypt(inputText, key.row, key.col);
         break;
       default:
         encryptedText = 'Invalid algorithm selected.';
@@ -132,6 +146,12 @@ function decryptText() {
         break;
       case 'columnTransposition':
         decryptedText = columTranspostion.decrypt(inputText, key);
+        break;
+      case 'myszkowski':
+        decryptedText = myszkowski.decrypt(inputText, key);
+        break;
+      case 'route':
+        encryptedText = routeCipher.decrypt(inputText, key.row, key.col);
         break;
       default:
         decryptedText = 'Invalid algorithm selected.';

@@ -53,7 +53,8 @@ function printMatrix(matrix) {
 }
 
 export function encrypt(input, key) {
-  let positionOfSorted = sortStringWithPositions(key);
+  console.log(input, key);
+  let positionOfSorted = sortStringWithPositions(input);
   //fill matrix
   var length = input.length;
   var cols = key.length;
@@ -90,7 +91,7 @@ export function encrypt(input, key) {
 }
 
 export function decrypt(input, key) {
-  let positionOfSorted = sortStringWithPositions(key);
+  let positionOfSorted = sortStringWithPositions(input);
   var length = input.length;
   let cols = key.length;
   let rows = Math.ceil(length / cols);
@@ -134,7 +135,7 @@ export function decrypt(input, key) {
 
 // var inputString = "TOMATO";
 // var plainText = "WE ARE DISCOVERED FLEE AT ONCE";
-// var encResult = encryptColumn(plainText,inputString);
+// var encResult = encryptMyszko(plainText,inputString);
 // console.log(encResult);
-// let decResult = decryptionColumn(encResult,inputString);
+// let decResult = decryptionMyszko(encResult,inputString);
 // console.log(decResult);
